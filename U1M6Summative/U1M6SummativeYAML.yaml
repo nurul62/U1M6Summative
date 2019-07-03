@@ -1,0 +1,267 @@
+openapi: 3.0.0
+info:
+  title: Rental Store Service
+  description: This web service is for Rental Store Service.
+  version: 0.0.1
+servers: 
+    - url: http://localhost:8080
+      description: Local dev server
+      
+paths:
+  /customer:
+    post:
+      summary: Request for customer data.
+      description: This service provides customer data upon request.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: A Customer object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    get:
+      summary: Provides customer data for each request.
+      description: This service requests for customer data.
+      responses:
+        '200':
+          description: This service provides customer data upon request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+  /customer/{id}:
+    get:
+      summary: This is a simple service to get customer data by id.
+      description: This is a simple service to get customer data by id.
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Find customer by id.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"      
+    put:
+      summary: Updated the entry for the customer with the given id.
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description:  Update customer by id.
+          schema:
+            type: string
+            
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: Customer successfully updated.
+        
+    delete:
+      summary: Deletes the entry for the customer with the given id
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Id of the customer.
+          schema:
+            type: string
+            
+      responses:
+        '200':
+          description: Customer successfully deleted.  
+          
+          
+  /item:
+    post:
+      summary: Request for item data.
+      description: This service request for item data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '201':
+          description: An item object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    get:
+      summary: Provides item data for each request.
+      description: This service provide item data upon request.
+      responses:
+        '200':
+          description: This service provide item data upon request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+  /item/{id}:
+    get:
+      summary: This is a simple service to get item by id.
+      description: This is a simple service to get item by id.
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Item id to get the data.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: item.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"      
+    put:
+      summary: Updated the entry for the item with the given id.
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description:  Id of the item you would like to update.
+          schema:
+            type: string
+            
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '200':
+          description: item successfully updated.
+                  
+    delete:
+      summary: Deletes item by id.
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Item id you would like to delete.
+          schema:
+            type: string
+            
+      responses:
+        '200':
+          description: item successfully deleted.            
+  /invoice:
+    post:
+      summary: Request for invoice.
+      description: This service is for requesting the data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '201':
+          description: invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+    get:
+      summary: Provides invoice data for each request.
+      description: This service provide invoice data upon request.
+      responses:
+        '200':
+          description: This service provide invoice data upon request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"             
+  /invoice/{id}:
+    get:
+      summary: This is a simple service to get item by id. 
+      description: This is a simple service to get item by id.
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: The id for finding the invoice
+          schema:
+            type: string
+      responses:
+        '200':
+          description: item.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"  
+    delete:
+      summary: This is a simple service to delete the invoice by id.
+      parameters: 
+        - name: id
+          in: path
+          required: true
+          description: Invoice id you would like to delete.
+          schema:
+            type: string
+            
+      responses:
+        '200':
+          description: Invoice successfully deleted.             
+components:
+  schemas:
+    Customer:
+      properties:
+        customerId:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        company:
+          type: string
+        phone:
+          type: string
+    Item:
+      properties:
+        itemId:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        dailyRate:
+          type: integer
+    Invoice:
+      properties:
+        invoiceId:
+          type: integer
+        customerId:
+          type: integer
+        orderDate:
+          type: string
+        pickupDate:
+          type: string
+        returnDate:
+          type: string
+        lateFees:
+          type: integer       
+    
