@@ -30,10 +30,10 @@ public class CustomerDaoTest {
     @Before
     public void setUp() throws Exception {
         // Clean up the test db
-        List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
-        for (InvoiceItem invoiceItem : invoiceItemList) {
-            InvoiceItemDao.(customer.getCustomerId());
-        }
+//        List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
+//        for (InvoiceItem invoiceItem : invoiceItemList) {
+//            InvoiceItemDao.d(.getCustomerId());
+//        }
         List<Customer> customerList = customerDao.getAllCustomers();
         for (Customer customer : customerList) {
             customerDao.deleteCustomer(customer.getCustomerId());
