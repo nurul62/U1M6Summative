@@ -8,12 +8,12 @@ public interface ItemDao {
 
     Item addItem(Item item);
 
-    Item getItem(int id);
+    Item getItem(int itemId);
 
     List<Item> getAllItems();
 
     void updateItem(Item item);
 
-    void deleteItem(int id);
+    void deleteItem(int itemId);
 
 }

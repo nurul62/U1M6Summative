@@ -27,7 +27,7 @@ public class ServiceLayer {
         return customerDao.addCustomer(customer);
     }
 
-//    public Item addItem(Item item){
-//        return itemDao.addItem(item);
-//    }
+    public Item addItem(Item item){
+        return itemDao.addItem(item);
+    }
 }

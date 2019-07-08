@@ -3,6 +3,7 @@ package com.company.U1M6Summative.dao;
 import com.company.U1M6Summative.model.Customer;
 import com.company.U1M6Summative.model.Invoice;
 import com.company.U1M6Summative.model.InvoiceItem;
+import com.company.U1M6Summative.model.Item;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,18 +31,25 @@ public class CustomerDaoTest {
     @Before
     public void setUp() throws Exception {
         // Clean up the test db
-//        List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItems();
-//        for (InvoiceItem invoiceItem : invoiceItemList) {
-//            InvoiceItemDao.d(.getCustomerId());
-//        }
+        List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItem();
+        for (InvoiceItem invoiceItem : invoiceItemList) {
+            invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId());
+        }
+        List<Item> itemList = itemDao.getAllItems();
+        for (Item item : itemList) {
+            itemDao.deleteItem(item.getItemId());
+        }
+
+        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
+        for (Invoice invoice : invoiceList) {
+            invoiceDao.deleteInvoice(invoice.getInvoiceId());
+        }
+
         List<Customer> customerList = customerDao.getAllCustomers();
         for (Customer customer : customerList) {
             customerDao.deleteCustomer(customer.getCustomerId());
         }
-
-
     }
-
     @Test
     public void addGetDeleteCustomer(){
         Customer customer = new Customer();
