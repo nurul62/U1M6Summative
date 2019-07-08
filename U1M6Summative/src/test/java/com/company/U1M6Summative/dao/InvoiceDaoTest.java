@@ -2,6 +2,7 @@ package com.company.U1M6Summative.dao;
 
 import com.company.U1M6Summative.model.Customer;
 import com.company.U1M6Summative.model.Invoice;
+import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +34,15 @@ public class InvoiceDaoTest {
     @Before
     public void setUp() throws Exception {
 
+        List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItem();
+        for (InvoiceItem invoiceItem : invoiceItemList) {
+            invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId());
+        }
+        List<Item> itemList = itemDao.getAllItems();
+        for (Item item : itemList) {
+            itemDao.deleteItem(item.getItemId());
+        }
+
         List<Invoice> invoiceList = invoiceDao.getAllInvoices();
         for (Invoice invoice : invoiceList) {
             invoiceDao.deleteInvoice(invoice.getInvoiceId());
@@ -42,7 +52,6 @@ public class InvoiceDaoTest {
         for (Customer customer : customerList) {
             customerDao.deleteCustomer(customer.getCustomerId());
         }
-
 
     }
 
