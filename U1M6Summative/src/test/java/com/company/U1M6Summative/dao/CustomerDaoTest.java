@@ -70,4 +70,26 @@ public class CustomerDaoTest {
 
         assertNull(customer1);
     }
+
+    @Test
+    public void updateCustomer() {
+        Customer customer = new Customer();
+        customer.setFirstName("Amy");
+        customer.setLastName("Alexa");
+        customer.setEmail("amy@gmail.com");
+        customer.setCompany("amazon");
+        customer.setPhone("111-222-3333");
+        customer = customerDao.addCustomer(customer);
+
+        customer.setFirstName("Joseph");
+        customer.setLastName("Jones");
+        customer.setEmail("jj@gmail.com");
+        customer = customerDao.addCustomer(customer);
+
+        customerDao.updateCustomer(customer);
+
+        Customer c1 = customerDao.getCustomer(customer.getCustomerId());
+
+        assertEquals(c1, customer);
+    }
 }
