@@ -5,9 +5,17 @@ import com.company.U1M6Summative.dao.InvoiceDao;
 import com.company.U1M6Summative.dao.InvoiceItemDao;
 import com.company.U1M6Summative.dao.ItemDao;
 import com.company.U1M6Summative.model.Customer;
+import com.company.U1M6Summative.model.Invoice;
+import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
+import com.company.U1M6Summative.viewmodel.CustomerViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Component
 public class ServiceLayer {
     CustomerDao customerDao;
     InvoiceDao invoiceDao;
@@ -27,7 +35,9 @@ public class ServiceLayer {
         return customerDao.addCustomer(customer);
     }
 
-    public Item addItem(Item item){
+    public Item addItem(Item item) {
         return itemDao.addItem(item);
     }
+
 }
+
