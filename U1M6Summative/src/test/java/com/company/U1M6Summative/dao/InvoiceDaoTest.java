@@ -2,6 +2,7 @@ package com.company.U1M6Summative.dao;
 
 import com.company.U1M6Summative.model.Customer;
 import com.company.U1M6Summative.model.Invoice;
+import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,15 +34,25 @@ public class InvoiceDaoTest {
     @Before
     public void setUp() throws Exception {
 
-        List<Customer> customerList = customerDao.getAllCustomers();
-        for (Customer customer : customerList) {
-            customerDao.deleteCustomer(customer.getCustomerId());
+        List<InvoiceItem> invoiceItemList = invoiceItemDao.getAllInvoiceItem();
+        for (InvoiceItem invoiceItem : invoiceItemList) {
+            invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId());
+        }
+        List<Item> itemList = itemDao.getAllItems();
+        for (Item item : itemList) {
+            itemDao.deleteItem(item.getItemId());
         }
 
         List<Invoice> invoiceList = invoiceDao.getAllInvoices();
         for (Invoice invoice : invoiceList) {
             invoiceDao.deleteInvoice(invoice.getInvoiceId());
         }
+
+        List<Customer> customerList = customerDao.getAllCustomers();
+        for (Customer customer : customerList) {
+            customerDao.deleteCustomer(customer.getCustomerId());
+        }
+
     }
 
 //    public class Customer {
@@ -176,7 +187,7 @@ public class InvoiceDaoTest {
         customer1.setEmail("amack@email.com");
         customer1.setCompany("Google");
         customer1.setPhone("987-654-3210");
-        customer1 = customerDao.addCustomer(customer);
+        customer1 = customerDao.addCustomer(customer1);
 
         Invoice invoice = new Invoice();
         invoice.setCustomerId(customer.getCustomerId());
