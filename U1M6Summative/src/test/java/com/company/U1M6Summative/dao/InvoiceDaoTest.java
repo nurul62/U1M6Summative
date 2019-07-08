@@ -33,15 +33,17 @@ public class InvoiceDaoTest {
     @Before
     public void setUp() throws Exception {
 
+        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
+        for (Invoice invoice : invoiceList) {
+            invoiceDao.deleteInvoice(invoice.getInvoiceId());
+        }
+
         List<Customer> customerList = customerDao.getAllCustomers();
         for (Customer customer : customerList) {
             customerDao.deleteCustomer(customer.getCustomerId());
         }
 
-        List<Invoice> invoiceList = invoiceDao.getAllInvoices();
-        for (Invoice invoice : invoiceList) {
-            invoiceDao.deleteInvoice(invoice.getInvoiceId());
-        }
+
     }
 
 //    public class Customer {
@@ -176,7 +178,7 @@ public class InvoiceDaoTest {
         customer1.setEmail("amack@email.com");
         customer1.setCompany("Google");
         customer1.setPhone("987-654-3210");
-        customer1 = customerDao.addCustomer(customer);
+        customer1 = customerDao.addCustomer(customer1);
 
         Invoice invoice = new Invoice();
         invoice.setCustomerId(customer.getCustomerId());
