@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class InvoiceItemDaoJdbcTemplateImpl {
+public class InvoiceItemDaoJdbcTemplateImpl implements InvoiceItemDao{
 
     private JdbcTemplate jdbcTemplate;
 
@@ -53,7 +53,7 @@ public class InvoiceItemDaoJdbcTemplateImpl {
         return invoiceItem;
 
     }
-    public InvoiceItem getItem(int id) {
+    public InvoiceItem getInvoiceItem(int id) {
 
         try {
             return jdbcTemplate.queryForObject(
@@ -86,7 +86,7 @@ public class InvoiceItemDaoJdbcTemplateImpl {
     }
 
 
-    public void setDeleteInvoiceItemSql(int id) {
+    public void deleteInvoiceItem(int id) {
 
         jdbcTemplate.update(DELETE_INVOICE_ITEM_SQL, id);
 
