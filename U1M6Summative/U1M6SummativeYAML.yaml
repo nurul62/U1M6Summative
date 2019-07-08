@@ -8,10 +8,10 @@ servers:
       description: Local dev server
       
 paths:
-  /customers:
+  /customer:
     post:
       summary: Request for customer data.
-      description: This service provide customer data upon request.
+      description: This service provides customer data upon request.
       requestBody:
         required: true
         content:
@@ -27,15 +27,15 @@ paths:
                 $ref: '#/components/schemas/Customer'
     get:
       summary: Provides customer data for each request.
-      description: This service request for customer data.
+      description: This service requests for customer data.
       responses:
         '200':
-          description: This service provide customer data upon request.
+          description: This service provides customer data upon request.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"
-  /customers/{id}:
+  /customer/{id}:
     get:
       summary: This is a simple service to get customer data by id.
       description: This is a simple service to get customer data by id.
@@ -54,7 +54,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Customer"      
     put:
-      summary: Updates the entry for the customer with the given id.
+      summary: Updated the entry for the customer with the given id.
       parameters: 
         - name: id
           in: path
@@ -88,7 +88,7 @@ paths:
           description: Customer successfully deleted.  
           
           
-  /items:
+  /item:
     post:
       summary: Request for item data.
       description: This service request for item data.
@@ -115,7 +115,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Item"
-  /items/{id}:
+  /item/{id}:
     get:
       summary: This is a simple service to get item by id.
       description: This is a simple service to get item by id.
@@ -134,7 +134,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Item"      
     put:
-      summary: Updates the entry for the item with the given id.
+      summary: Updated the entry for the item with the given id.
       parameters: 
         - name: id
           in: path
@@ -166,7 +166,7 @@ paths:
       responses:
         '200':
           description: item successfully deleted.            
-  /invoices:
+  /invoice:
     post:
       summary: Request for invoice.
       description: This service is for requesting the data.
@@ -193,7 +193,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/InvoiceDao"
-  /invoices/{id}:
+  /invoice/{id}:
     get:
       summary: This is a simple service to get item by id. 
       description: This is a simple service to get item by id.
