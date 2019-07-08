@@ -175,14 +175,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Invoice'
+              $ref: '#/components/schemas/InvoiceDao'
       responses:
         '201':
           description: invoice
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Invoice'
+                $ref: '#/components/schemas/InvoiceDao'
     get:
       summary: Provides invoice data for each request.
       description: This service provide invoice data upon request.
@@ -192,7 +192,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Invoice"             
+                $ref: "#/components/schemas/InvoiceDao"
   /invoice/{id}:
     get:
       summary: This is a simple service to get item by id. 
@@ -217,13 +217,13 @@ paths:
         - name: id
           in: path
           required: true
-          description: Invoice id you would like to delete.
+          description: InvoiceDao id you would like to delete.
           schema:
             type: string
             
       responses:
         '200':
-          description: Invoice successfully deleted.             
+          description: InvoiceDao successfully deleted.
 components:
   schemas:
     Customer:
