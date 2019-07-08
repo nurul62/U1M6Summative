@@ -50,8 +50,9 @@ public class CustomerDaoTest {
             customerDao.deleteCustomer(customer.getCustomerId());
         }
     }
+
     @Test
-    public void addGetDeleteCustomer(){
+    public void addGetDeleteCustomer() {
         Customer customer = new Customer();
         customer.setFirstName("Amy");
         customer.setLastName("Alexa");
@@ -69,5 +70,48 @@ public class CustomerDaoTest {
         customer1 = customerDao.getCustomer(customer.getCustomerId());
 
         assertNull(customer1);
+    }
+
+    @Test
+    public void getAllCustomers() {
+        Customer customer = new Customer();
+        customer.setFirstName("John");
+        customer.setLastName("Doe");
+        customer.setEmail("jdoe@email.com");
+        customer.setCompany("AWS");
+        customer.setPhone("123-456-7890");
+        customer = customerDao.addCustomer(customer);
+
+        customer = new Customer();
+        customer.setFirstName("John");
+        customer.setLastName("Doe");
+        customer.setEmail("jdoe@email.com");
+        customer.setCompany("AWS");
+        customer.setPhone("123-456-7890");
+        customer = customerDao.addCustomer(customer);
+
+        List<Customer> customerList = customerDao.getAllCustomers();
+
+        assertEquals(customerList.size(), 2);
+    }
+
+    @Test
+    public void updateInvoice() {
+
+        Customer customer = new Customer();
+        customer.setFirstName("John");
+        customer.setLastName("Doe");
+        customer.setEmail("jdoe@email.com");
+        customer.setCompany("AWS");
+        customer.setPhone("123-456-7890");
+        customer = customerDao.addCustomer(customer);
+
+        customer.setFirstName("Jerry");
+        customer.setCompany("Cognizant");
+        customerDao.updateCustomer(customer);
+
+        Customer customer1 = customerDao.getCustomer(customer.getCustomerId());
+
+        assertEquals(customer1, customer);
     }
 }
