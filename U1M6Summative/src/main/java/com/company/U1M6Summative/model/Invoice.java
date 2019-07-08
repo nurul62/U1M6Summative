@@ -1,5 +1,6 @@
 package com.company.U1M6Summative.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ public class Invoice {
     private LocalDate orderDate;
     private LocalDate pickupDate;
     private LocalDate returnDate;
-    private double lateFee;
+    private BigDecimal lateFee;
 
     public int getInvoiceId() {
         return invoiceId;
@@ -51,11 +52,11 @@ public class Invoice {
         this.returnDate = returnDate;
     }
 
-    public double getLateFee() {
+    public BigDecimal getLateFee() {
         return lateFee;
     }
 
-    public void setLateFee(double lateFee) {
+    public void setLateFee(BigDecimal lateFee) {
         this.lateFee = lateFee;
     }
 
@@ -64,17 +65,16 @@ public class Invoice {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Invoice invoice = (Invoice) o;
-        return getInvoiceId() == invoice.getInvoiceId() &&
-                Objects.equals(getCustomerId(), invoice.getCustomerId()) &&
-                Objects.equals(getOrderDate(), invoice.getOrderDate()) &&
-                Objects.equals(getPickupDate(), invoice.getPickupDate()) &&
-                Objects.equals(getReturnDate(), invoice.getReturnDate()) &&
-                Objects.equals(getLateFee(), invoice.getLateFee());
+        return invoiceId == invoice.invoiceId &&
+                customerId == invoice.customerId &&
+                Objects.equals(orderDate, invoice.orderDate) &&
+                Objects.equals(pickupDate, invoice.pickupDate) &&
+                Objects.equals(returnDate, invoice.returnDate) &&
+                Objects.equals(lateFee, invoice.lateFee);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getInvoiceId(), getCustomerId(), getOrderDate(), getPickupDate(), getReturnDate(), getLateFee());
-
+        return Objects.hash(invoiceId, customerId, orderDate, pickupDate, returnDate, lateFee);
     }
 }

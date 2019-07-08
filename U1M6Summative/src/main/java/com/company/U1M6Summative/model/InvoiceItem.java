@@ -1,5 +1,6 @@
 package com.company.U1M6Summative.model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InvoiceItem {
@@ -7,8 +8,8 @@ public class InvoiceItem {
     private int invoiceId;
     private int itemId;
     private int quantity;
-    private double unitRate;
-    private double discount;
+    private BigDecimal unitRate;
+    private BigDecimal discount;
 
     public int getInvoiceItemId() {
         return invoiceItemId;
@@ -42,37 +43,37 @@ public class InvoiceItem {
         this.quantity = quantity;
     }
 
-    public double getUnitRate() {
+    public BigDecimal getUnitRate() {
         return unitRate;
     }
 
-    public void setUnitRate(double unitRate) {
+    public void setUnitRate(BigDecimal unitRate) {
         this.unitRate = unitRate;
     }
 
-    public double getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        InvoiceItem invoiceItem = (InvoiceItem) o;
-        return getInvoiceItemId() == invoiceItem.getInvoiceItemId() &&
-                Objects.equals(getInvoiceId(), invoiceItem.getInvoiceId()) &&
-                Objects.equals(getItemId(), invoiceItem.getItemId()) &&
-                Objects.equals(getQuantity(), invoiceItem.getQuantity()) &&
-                Objects.equals(getUnitRate(), invoiceItem.getUnitRate()) &&
-                Objects.equals(getDiscount(), invoiceItem.getDiscount());
+        InvoiceItem that = (InvoiceItem) o;
+        return invoiceItemId == that.invoiceItemId &&
+                invoiceId == that.invoiceId &&
+                itemId == that.itemId &&
+                quantity == that.quantity &&
+                Objects.equals(unitRate, that.unitRate) &&
+                Objects.equals(discount, that.discount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getInvoiceItemId(), getInvoiceId(), getItemId(), getQuantity(), getUnitRate(), getDiscount());
-
+        return Objects.hash(invoiceItemId, invoiceId, itemId, quantity, unitRate, discount);
     }
 }
