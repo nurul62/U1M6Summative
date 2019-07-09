@@ -66,14 +66,14 @@ public class InvoiceItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceItem that = (InvoiceItem) o;
-        boolean results = invoiceItemId == that.invoiceItemId &&
+        return invoiceItemId == that.invoiceItemId &&
                 invoiceId == that.invoiceId &&
                 itemId == that.itemId &&
                 quantity == that.quantity &&
                 Objects.equals(unitRate, that.unitRate) &&
                 Objects.equals(discount.intValue(), that.discount.intValue());
 
-        return results;
+
     }
 
     @Override
