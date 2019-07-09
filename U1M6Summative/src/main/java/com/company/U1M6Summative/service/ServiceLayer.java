@@ -9,6 +9,7 @@ import com.company.U1M6Summative.model.Invoice;
 import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 import com.company.U1M6Summative.viewmodel.CustomerViewModel;
+import com.company.U1M6Summative.viewmodel.ItemViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -107,7 +108,7 @@ public class ServiceLayer {
 
     // ITEM API
 
-    public Item saveItem(Item item) {
+    public Item saveItem(ItemViewModel item) {
         return itemDao.addItem(item);
     }
 
