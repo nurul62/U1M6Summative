@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
@@ -22,9 +23,8 @@ public class CustomerViewController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public CustomerViewModel findAllCustomer(@RequestBody CustomerViewModel customerViewModel){
-        //return serviceLayer.findAllCustomers(customerViewModel);
-        return null;
+    public List<CustomerViewModel> findAllCustomers(){
+        return serviceLayer.findAllCustomers();
     }
 
     @GetMapping("/{id}")
