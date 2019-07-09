@@ -4,16 +4,19 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class InvoiceItemViewModel {
+    private int itemId;
+    private int invoiceItemId;
     private int quantity;
     private BigDecimal unitRate;
     private BigDecimal discount;
     private String itemName;
     private String itemDescription;
     private BigDecimal itemDailyRate;
-    private int itemId;
-    private int invoiceItemId;
 
-    public InvoiceItemViewModel(int quantity, BigDecimal unitRate, BigDecimal discount, String itemName, String itemDescription, BigDecimal itemDailyRate, int itemId, int invoiceItemId) {
+
+    public InvoiceItemViewModel(int quantity, BigDecimal unitRate, BigDecimal discount,
+                                String itemName, String itemDescription, BigDecimal itemDailyRate,
+                                int itemId, int invoiceItemId) {
         this.quantity = quantity;
         this.unitRate = unitRate;
         this.discount = discount;
