@@ -59,17 +59,21 @@ public class InvoiceItem {
         this.discount = discount;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceItem that = (InvoiceItem) o;
-        return invoiceItemId == that.invoiceItemId &&
+        boolean results = invoiceItemId == that.invoiceItemId &&
                 invoiceId == that.invoiceId &&
                 itemId == that.itemId &&
                 quantity == that.quantity &&
                 Objects.equals(unitRate, that.unitRate) &&
-                Objects.equals(discount, that.discount);
+                Objects.equals(discount.intValue(), that.discount.intValue());
+
+        return results;
     }
 
     @Override

@@ -3,6 +3,10 @@
 //import com.company.U1M6Summative.model.Customer;
 //import com.company.U1M6Summative.model.Item;
 //import com.company.U1M6Summative.service.ServiceLayer;
+<<<<<<< HEAD
+=======
+//import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
+>>>>>>> 85ea59fe733a914cf4a03a48f52078b56fad0e75
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.web.bind.annotation.*;
@@ -17,6 +21,7 @@
 //
 //    @PostMapping("/items")
 //    @ResponseStatus(value = HttpStatus.CREATED)
+<<<<<<< HEAD
 //    public Customer createCustomer(@RequestBody Customer customer) {
 //        customer.setCustomerId(2);
 //        customer.setFirstName("Nurmmmmm");
@@ -80,11 +85,20 @@
 //        return service.addItem(item);
 //    }
 //
+=======
+//    public Item addItem(@RequestBody @Valid Item item){
+//        return service.addItem(item);
+//    }
+//
+>>>>>>> 85ea59fe733a914cf4a03a48f52078b56fad0e75
 //    @PostMapping("/customers")
 //    @ResponseStatus(value = HttpStatus.CREATED)
 //    public Customer addCustomer(@RequestBody @Valid Customer customer){
 //        return service.addCustomer(customer);
+<<<<<<< HEAD
 //>>>>>>> 4398a7a0b22e34476a9fc11dcd994cd04be6a4a1
+=======
+>>>>>>> 85ea59fe733a914cf4a03a48f52078b56fad0e75
 //    }
 //
 ////    @PostMapping("/invoices")
@@ -98,6 +112,7 @@
 ////        return service.getInvoice(invoiceId);
 //    }
 //
+<<<<<<< HEAD
 //    @RequestMapping(value = "/item/{itemId}", method = RequestMethod.DELETE)
 //    @ResponseStatus(value = HttpStatus.OK)
 //    public void delItem(@PathVariable("itemId") int itemId) {
@@ -117,4 +132,8 @@
 //    public void deleteInvoice(@PathVariable("invoiceId") int invoiceId) {
 //        invoiceDao.deleteInvoice(invoiceId);
 //    }
+=======
+//
+//
+>>>>>>> 85ea59fe733a914cf4a03a48f52078b56fad0e75
 //
