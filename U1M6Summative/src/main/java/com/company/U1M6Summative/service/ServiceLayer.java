@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -62,6 +63,100 @@ public class ServiceLayer {
 
         return buildCustomerViewModel(customer);
     }
+
+    public List<CustomerViewModel> findAllCustomers() {
+        List<Customer> cList = customerDao.getAllCustomers();
+        List<CustomerViewModel> cvmList = new ArrayList<>();
+
+        for (Customer c : cList) {
+            CustomerViewModel cvm = buildCustomerViewModel(c);
+            cvmList.add(cvm);
+        }
+
+        return cvmList;
+    }
+
+
+    // INVOICE API
+
+    public Invoice saveInvoice(Invoice invoice) {
+        return invoiceDao.addInvoice(invoice);
+    }
+
+    public Invoice findInvoice(int invoiceId) {
+        return invoiceDao.getInvoice(invoiceId);
+    }
+
+    public List<Invoice> findAllInvoices() {
+        return invoiceDao.getAllInvoices();
+    }
+
+    public void updateInvoice(Invoice invoice) { //change to public Invoice updateInvoice(Invoice invoice){
+        invoiceDao.updateInvoice(invoice); //return invoiceDao.updateInvoice(invoice);
+        //**MUST CHANGE METHOD IN InvoiceDao TO RETURN AN OBJECT (Invoice) in order to work correctly
+    }
+
+    public void removeInvoice(int invoiceId) {
+        invoiceDao.deleteInvoice(invoiceId);
+
+    }
+
+    public List<Invoice> findInvoiceByCustomer(int customerId) {
+        return invoiceDao.getInvoicesByCustomer(customerId);
+    }
+
+    // ITEM API
+
+    public Item saveItem(Item item) {
+        return itemDao.addItem(item);
+    }
+
+    public Item findItem (int itemId) {
+        return itemDao.getItem(itemId);
+    }
+
+    public List<Item> findAllItems() {
+        return itemDao.getAllItems();
+    }
+
+    public void updateItem(Item item) { //change to public Invoice updateInvoice(Invoice invoice){
+        itemDao.updateItem(item); //return invoiceDao.updateInvoice(invoice);
+        //**MUST CHANGE METHOD IN InvoiceDao TO RETURN AN OBJECT (Invoice) in order to work correctly
+    }
+
+    public void removeItem(int itemId) {
+        itemDao.deleteItem(itemId);
+
+    }
+
+    //INVOICE ITEM API
+
+    public InvoiceItem saveInvoiceItem(InvoiceItem invoiceItem) {
+        return invoiceItemDao.addInvoiceItem(invoiceItem);
+    }
+
+    public InvoiceItem findInvoiceItem(int invoiceItemId) {
+        return invoiceItemDao.getInvoiceItem(invoiceItemId);
+    }
+
+    public List<InvoiceItem> findAllInvoiceItems() {
+        return invoiceItemDao.getAllInvoiceItem();
+    }
+
+    public void updateInvoiceItem (InvoiceItem invoiceItem) { //change to public Invoice updateInvoice(Invoice invoice){
+        invoiceItemDao.updateInvoiceItem(invoiceItem); //return invoiceDao.updateInvoice(invoice);
+        //**MUST CHANGE METHOD IN InvoiceDao TO RETURN AN OBJECT (Invoice) in order to work correctly
+    }
+
+    public void removeInvoiceItem(int invoiceItemId) {
+        invoiceItemDao.deleteInvoiceItem(invoiceItemId);
+    }
+
+    public List<InvoiceItem> findInvoiceItemByInvoice(int invoiceId) {
+        return invoiceItemDao.getInvoiceItemsByInvoice(invoiceId);
+    }
+
+
 
     //Helpers
 
