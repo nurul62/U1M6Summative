@@ -10,14 +10,59 @@ import java.util.Objects;
 
 public class CustomerViewModel {
 
-    private Customer customer;
+    private int customerId;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String company;
+    private String phone;
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
@@ -25,11 +70,16 @@ public class CustomerViewModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerViewModel that = (CustomerViewModel) o;
-        return Objects.equals(customer, that.customer);
+        return customerId == that.customerId &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(phone, that.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(customer);
+        return Objects.hash(customerId, firstName, lastName, email, company, phone);
     }
 }
