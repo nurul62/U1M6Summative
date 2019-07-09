@@ -18,12 +18,14 @@ public class InvoiceViewController {
     @ResponseStatus(HttpStatus.CREATED)
     public InvoiceViewModel createInvoice(@RequestBody @Valid InvoiceViewModel invoiceViewModel) {
         //return serviceLayer.saveInvoice(invoiceViewModel);
+        return invoiceViewModel;
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public  InvoiceViewController getInvoice(@PathVariable("id") int invoiceId){
-        //return serviceLayer.findInvoice(invoiceId)
+        //return serviceLayer.findInvoice(invoiceId);
+        return null;
     }
 
     @DeleteMapping("/(id)")

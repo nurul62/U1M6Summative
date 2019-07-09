@@ -20,6 +20,13 @@ public class CustomerViewController {
         return serviceLayer.saveCustomer(customerViewModel);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public CustomerViewModel findAllCustomer(@RequestBody CustomerViewModel customerViewModel){
+        //return serviceLayer.findAllCustomers(customerViewModel);
+        return null;
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public  CustomerViewModel findCustomer(@PathVariable("id") int customerId){
@@ -28,13 +35,13 @@ public class CustomerViewController {
 
     @DeleteMapping("/(id)")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCustomer(@PathVariable("id") int customerId) {
-        //serviceLayer.
+    public void removeCustomer(@PathVariable("id") int customerId) {
+        //serviceLayer.removeCustomer(customerId);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCustomer(@PathVariable("id") int customerId){
-        //serviceLayer.
+        //serviceLayer.updateCustomer(customerId);
     }
 }
