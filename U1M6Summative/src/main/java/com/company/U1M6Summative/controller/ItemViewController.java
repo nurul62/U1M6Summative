@@ -19,12 +19,14 @@ public class ItemViewController {
     @ResponseStatus(HttpStatus.CREATED)
     public ItemViewModel createItem(@RequestBody @Valid ItemViewModel itemViewModel) {
         //return serviceLayer.saveItem(itemViewModel);
+        return itemViewModel;
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public  ItemViewModel getItem(@PathVariable("id") int itemId){
         //return serviceLayer.findItem(itemId);
+        return null;
     }
 
     @DeleteMapping("/(id)")

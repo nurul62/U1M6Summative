@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
@@ -20,6 +21,12 @@ public class CustomerViewController {
         return serviceLayer.saveCustomer(customerViewModel);
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<CustomerViewModel> findAllCustomers(){
+        return serviceLayer.findAllCustomers();
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public  CustomerViewModel findCustomer(@PathVariable("id") int customerId){
@@ -28,13 +35,13 @@ public class CustomerViewController {
 
     @DeleteMapping("/(id)")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCustomer(@PathVariable("id") int customerId) {
-        //serviceLayer.
+    public void removeCustomer(@PathVariable("id") int customerId) {
+        //serviceLayer.removeCustomer(customerId);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateCustomer(@PathVariable("id") int customerId){
-        //serviceLayer.
+        //serviceLayer.updateCustomer(customerId);
     }
 }
