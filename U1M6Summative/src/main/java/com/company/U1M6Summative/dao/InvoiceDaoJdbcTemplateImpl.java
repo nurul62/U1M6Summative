@@ -105,10 +105,11 @@ public class InvoiceDaoJdbcTemplateImpl implements InvoiceDao {
     }
 
     @Override
-    public void deleteInvoice(int invoiceId) {
+    public Invoice deleteInvoice(int invoiceId) {
 
         jdbcTemplate.update(DELETE_INVOICE_SQL, invoiceId);
 
+        return null;
     }
 
     private Invoice mapRowToInvoice (ResultSet rs, int rowNum) throws SQLException {
