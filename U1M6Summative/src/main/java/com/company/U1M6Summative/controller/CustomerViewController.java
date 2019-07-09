@@ -17,24 +17,24 @@ public class CustomerViewController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CustomerViewModel createCustomer(@RequestBody @Valid CustomerViewModel customerViewModel) {
-        //return serviceLayer.addCustomer(customerViewModel);
+        return serviceLayer.saveCustomer(customerViewModel);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public  CustomerViewModel getCustomer(@PathVariable("id") int customerId){
-
+    public  CustomerViewModel findCustomer(@PathVariable("id") int customerId){
+        return serviceLayer.findCustomer(customerId);
     }
 
     @DeleteMapping("/(id)")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCustomer() {
-
+    public void deleteCustomer(@PathVariable("id") int customerId) {
+        //serviceLayer.
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCustomer(){
-
+    public void updateCustomer(@PathVariable("id") int customerId){
+        //serviceLayer.
     }
 }

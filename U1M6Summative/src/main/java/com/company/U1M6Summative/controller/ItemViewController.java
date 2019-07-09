@@ -24,7 +24,7 @@ public class ItemViewController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public  ItemViewModel getItem(@PathVariable("id") int itemId){
-
+        //return serviceLayer.findItem(itemId);
     }
 
     @DeleteMapping("/(id)")

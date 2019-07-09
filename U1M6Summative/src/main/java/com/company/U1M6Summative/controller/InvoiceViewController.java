@@ -23,7 +23,7 @@ public class InvoiceViewController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public  InvoiceViewController getInvoice(@PathVariable("id") int invoiceId){
-
+        //return serviceLayer.findInvoice(invoiceId)
     }
 
     @DeleteMapping("/(id)")
