@@ -11,18 +11,19 @@ import com.company.U1M6Summative.model.Item;
 import com.company.U1M6Summative.viewmodel.CustomerViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
-
-@Component
+@Component //creates a list of components (DAOs)
 public class ServiceLayer {
-    CustomerDao customerDao;
-    InvoiceDao invoiceDao;
-    InvoiceItemDao invoiceItemDao;
-    ItemDao itemDao;
+    private CustomerDao customerDao;
+    private InvoiceDao invoiceDao;
+    private InvoiceItemDao invoiceItemDao;
+    private ItemDao itemDao;
 
-    @Autowired
-
+    @Autowired //dependency injection
     public ServiceLayer(CustomerDao customerDao, InvoiceDao invoiceDao, InvoiceItemDao invoiceItemDao, ItemDao itemDao) {
         this.customerDao = customerDao;
         this.invoiceDao = invoiceDao;
@@ -30,12 +31,51 @@ public class ServiceLayer {
         this.itemDao = itemDao;
     }
 
-    public Customer addCustomer(Customer customer) {
-        return customerDao.addCustomer(customer);
+//    public Customer addCustomer(Customer customer) {
+//        return customerDao.addCustomer(customer);
+//    }
+//
+//    public Item addItem(Item item) {
+//        return itemDao.addItem(item);
+//    }
+
+    //CUSTOMER API
+
+    @Transactional //take data from viewModel, persist to DAO, communicate w/ DAO
+    public CustomerViewModel saveCustomer(CustomerViewModel viewModel) {
+
+        //persist Customer
+        Customer customer = new Customer();
+        customer.setFirstName(viewModel.getFirstName());
+        customer.setLastName(viewModel.getLastName());
+        customer.setEmail(viewModel.getEmail());
+        customer.setCompany(viewModel.getCompany());
+        customer.setPhone(viewModel.getPhone());
+        customer = customerDao.addCustomer(customer);
+        viewModel.setCustomerId(customer.getCustomerId());
+
+        return viewModel;
     }
 
-    public Item addItem(Item item) {
-        return itemDao.addItem(item);
+    public CustomerViewModel findCustomer(int customerId) {
+        Customer customer = customerDao.getCustomer(customerId);
+
+        return buildCustomerViewModel(customer);
+    }
+
+    //Helpers
+
+    private CustomerViewModel buildCustomerViewModel(Customer customer) {
+        //Assemble CustomerViewModel
+        CustomerViewModel cvm = new CustomerViewModel();
+        cvm.setCustomerId(customer.getCustomerId());
+        cvm.setFirstName(customer.getFirstName());
+        cvm.setLastName(customer.getLastName());
+        cvm.setEmail(customer.getEmail());
+        cvm.setCompany(customer.getCompany());
+        cvm.setPhone(customer.getPhone());
+
+        return cvm;
     }
 
 }

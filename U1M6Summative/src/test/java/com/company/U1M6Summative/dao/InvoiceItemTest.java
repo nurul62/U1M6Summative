@@ -37,14 +37,15 @@ public class InvoiceItemTest {
         for (InvoiceItem invoiceItem : invoiceItemList) {
             invoiceItemDao.deleteInvoiceItem(invoiceItem.getInvoiceItemId());
         }
-        List<Item> itemList = itemDao.getAllItems();
-        for (Item item : itemList) {
-            itemDao.deleteItem(item.getItemId());
-        }
 
         List<Invoice> invoiceList = invoiceDao.getAllInvoices();
         for (Invoice invoice : invoiceList) {
             invoiceDao.deleteInvoice(invoice.getInvoiceId());
+        }
+
+        List<Item> itemList = itemDao.getAllItems();
+        for (Item item : itemList) {
+            itemDao.deleteItem(item.getItemId());
         }
 
         List<Customer> customerList = customerDao.getAllCustomers();
