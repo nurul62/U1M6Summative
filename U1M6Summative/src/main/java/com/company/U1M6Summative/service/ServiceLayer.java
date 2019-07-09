@@ -12,8 +12,7 @@ import com.company.U1M6Summative.viewmodel.CustomerViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Component
 public class ServiceLayer {

@@ -117,7 +117,7 @@ public class InvoiceDaoTest {
         invoice.setOrderDate(LocalDate.of(2019, 07, 8));
         invoice.setPickupDate(LocalDate.of(2019, 07, 15));
         invoice.setReturnDate(LocalDate.of(2019, 07, 22));
-        invoice.setLateFee(new BigDecimal("2.00"));
+        invoice.setLateFee(new BigDecimal("3.19"));
         invoice = invoiceDao.addInvoice(invoice);
 
         invoice.setOrderDate(LocalDate.of(2019, 06, 8));
