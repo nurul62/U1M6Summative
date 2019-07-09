@@ -28,6 +28,13 @@ public class RentalStoreController {
     @RequestMapping(value = "/customer", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public Customer createCustomer(@RequestBody Customer customer) {
+        customer.setCustomerId(2);
+        customer.setFirstName("Nurmmmmm");
+        customer.setLastName("AlamMMMMMMM");
+        customer.setEmail("abcdw@gmail.com");
+        customer.setCompany("ABCED");
+        customer.setPhone("400-400-4000");
+
         customer = customerDao.addCustomer(customer);
         return customer;
     }
@@ -47,33 +54,37 @@ public class RentalStoreController {
         customer.setCustomerId(customerId);
         customer.setFirstName("Nur");
         customer.setLastName("Alam");
-        customer.setCompany("ABC");
         customer.setEmail("abc@gmail.com");
+        customer.setCompany("ABC");
         customer.setPhone("200-200-2000");
 
         return customer;
     }
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Customer deleteCustomer(@PathVariable("id") int customerId) {
+    public void deleteCustomer(@PathVariable("customerId") int customerId) {
         //code
-        return deleteCustomer(customerId);
+       customerDao.deleteCustomer(customerId);
     }
 
-    @RequestMapping(value = "/customer/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public Customer updateCustomer(@Valid Customer customer, @PathVariable("id") int customerId) {
-        if (customerId != customer.getCustomerId()){
+    public void updateCustomer(@Valid Customer customer, @PathVariable("customerId") int customerId) {
+        if (customerId != customer.getCustomerId()) {
             throw new IllegalArgumentException("Customer ID on path must match.");
         }
-        return customer;
     }
     //itemDao
     @RequestMapping(value = "/item", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public Item createItem(Item item) {
-        item = itemDao.addItem(item);
-        return item;
+        Item item1 = new Item();
+        item1.setItemId(2);
+        item1.setName("XXX");
+        item1.setDailyRate(new BigDecimal(100.99));
+        item1.setDescription("This is a item");
+
+        return item1;
     }
 
     @RequestMapping(value = "/item/{id}", method = RequestMethod.GET)
@@ -97,16 +108,16 @@ public class RentalStoreController {
         return item;
     }
 
-    @RequestMapping(value = "/item/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/item/{itemId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
-    public Item deleteItem(@PathVariable("id") int itemId) {
-        return deleteItem(itemId);
+    public void delItem(@PathVariable("itemId") int itemId) {
+        itemDao.deleteItem(itemId);
     }
 
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.OK)
-    public Item updateItem(@PathVariable("id") int itemId) {
-        return updateItem(itemId);
+    public Item updateItem(@RequestBody Item itemId) {
+        return itemDao.updateItem(itemId);
     }
 
     /* Create and delete Invoices, including the associated Invoice Items
@@ -119,10 +130,10 @@ public class RentalStoreController {
         return invoiceDao.addInvoice(invoice);
     }
 
-    @RequestMapping(value = "/invoice/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/invoice/{invoiceId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
-    public Invoice deleteInvoice(@PathVariable("id") int invoiceId) {
-        return deleteInvoice(invoiceId);
+    public void deleteInvoice(@PathVariable("invoiceId") int invoiceId) {
+        invoiceDao.deleteInvoice(invoiceId);
     }
 
     @RequestMapping(value = "/invoice/customer/{id}", method = RequestMethod.GET)

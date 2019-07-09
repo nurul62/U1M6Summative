@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -69,18 +68,20 @@ public class ItemDaoJdbcTemplateImpl implements ItemDao{
     }
 
     @Override
-    public void updateItem(Item item) {
+    public Item updateItem(Item item) {
         jdbcTemplate.update(UPDATE_ITEM_SQL,
                 item.getName(),
                 item.getDescription(),
                 item.getDailyRate(),
                 item.getItemId());
 
+        return item;
     }
 
     @Override
-    public void deleteItem(int itemId) {
+    public Item deleteItem(int itemId) {
         jdbcTemplate.update(DELETE_ITEM_SQL,itemId);
+        return null;
     }
 }
 
