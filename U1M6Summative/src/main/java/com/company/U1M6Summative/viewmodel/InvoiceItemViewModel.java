@@ -3,7 +3,6 @@ package com.company.U1M6Summative.viewmodel;
 import java.math.BigDecimal;
 
 public class InvoiceItemViewModel {
-
     private int quantity;
     private BigDecimal unitRate;
     private BigDecimal discount;

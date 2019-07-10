@@ -14,10 +14,8 @@ import com.company.U1M6Summative.viewmodel.InvoiceItemViewModel;
 import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
 =======
 <<<<<<< HEAD
-import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
 =======
 >>>>>>> 40023ea75e1884dd5a5efde79a60055963f520c9
-import com.company.U1M6Summative.viewmodel.ItemViewModel;
 >>>>>>> origin/master
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
