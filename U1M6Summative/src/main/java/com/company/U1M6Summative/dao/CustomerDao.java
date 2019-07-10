@@ -12,9 +12,9 @@ public interface CustomerDao {
 
     List<Customer> getAllCustomers();
 
-    Customer updateCustomer(Customer customer);
+    void updateCustomer(Customer customer);
 
-    Customer deleteCustomer(int customerId);
+    void deleteCustomer(int customerId);
 
 
 }
