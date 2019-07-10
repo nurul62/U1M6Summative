@@ -1,6 +1,7 @@
 package com.company.U1M6Summative.controller;
 
 
+import com.company.U1M6Summative.model.Customer;
 import com.company.U1M6Summative.service.ServiceLayer;
 import com.company.U1M6Summative.viewmodel.CustomerViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,17 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/store")
 public class CustomerViewController {
-//    @Autowired
-//    ServiceLayer serviceLayer;
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public CustomerViewModel createCustomer(@RequestBody @Valid CustomerViewModel customerViewModel) {
-//        return serviceLayer.saveCustomer(customerViewModel);
-//    }
+
+    @Autowired
+    private ServiceLayer service;
+
+    @PostMapping("/customers")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public Customer addCustomer(@RequestBody @Valid Customer customer){
+        return service.addCustomer(customer);
+    }
 //
 //    @GetMapping
 //    @ResponseStatus(HttpStatus.OK)
