@@ -35,13 +35,20 @@ public class CustomerViewController {
 
     @DeleteMapping("/(id)")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeCustomer(@PathVariable("id") int customerId) {
-        //serviceLayer.removeCustomer(customerId);
+    public CustomerViewModel deleteCustomer(@PathVariable("id") int id) {
+        //incomplete method
+        //serviceLayer.removeCustomer(id);
+        return null;
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCustomer(@PathVariable("id") int customerId){
-        //serviceLayer.updateCustomer(customerId);
+    public CustomerViewModel updateCustomer(@RequestBody @Valid CustomerViewModel customerViewModel, @PathVariable("id") Integer id){
+        if(id != customerViewModel.getCustomerId()){
+            throw new IllegalArgumentException();
+        }
+        //incomplete method
+        //return serviceLayer.updateCustomer(customerViewModel);
+        return null;
     }
 }

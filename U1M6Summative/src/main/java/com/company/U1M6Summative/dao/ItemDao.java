@@ -1,6 +1,7 @@
 package com.company.U1M6Summative.dao;
 
 import com.company.U1M6Summative.model.Item;
+import com.company.U1M6Summative.viewmodel.ItemViewModel;
 
 import java.util.List;
 

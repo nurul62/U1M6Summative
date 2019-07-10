@@ -2,9 +2,11 @@ package com.company.U1M6Summative.viewmodel;
 
 import com.company.U1M6Summative.model.Item;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 public class ItemViewModel {
+    @NotEmpty(message = "Item can not be empty.")
     private Item item;
 
     public Item getItem() {

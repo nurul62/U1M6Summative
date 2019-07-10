@@ -9,10 +9,13 @@ import com.company.U1M6Summative.model.Invoice;
 import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 import com.company.U1M6Summative.viewmodel.CustomerViewModel;
+import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
+import com.company.U1M6Summative.viewmodel.ItemViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,7 +82,7 @@ public class ServiceLayer {
 
     // INVOICE API
 
-    public Invoice saveInvoice(Invoice invoice) {
+    public Invoice saveInvoice(@Valid InvoiceViewModel invoice) {
         return invoiceDao.addInvoice(invoice);
     }
 
@@ -107,8 +110,8 @@ public class ServiceLayer {
 
     // ITEM API
 
-    public Item saveItem(Item item) {
-        return itemDao.addItem(item);
+    public ItemViewModel saveItem(@Valid ItemViewModel itemViewModel) {
+        return itemDao.addItem(itemViewModel);
     }
 
     public Item findItem (int itemId) {

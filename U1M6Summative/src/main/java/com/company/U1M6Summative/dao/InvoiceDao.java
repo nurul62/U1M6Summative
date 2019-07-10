@@ -1,12 +1,13 @@
 package com.company.U1M6Summative.dao;
 
 import com.company.U1M6Summative.model.Invoice;
+import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
 
 import java.util.List;
 
 public interface InvoiceDao {
 
-    Invoice addInvoice(Invoice invoice);
+    Invoice addInvoice(InvoiceViewModel invoice);
 
     Invoice getInvoice(int invoiceId);
 

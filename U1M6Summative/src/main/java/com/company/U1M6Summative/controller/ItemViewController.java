@@ -1,6 +1,7 @@
 package com.company.U1M6Summative.controller;
 
 
+import com.company.U1M6Summative.model.Item;
 import com.company.U1M6Summative.service.ServiceLayer;
 import com.company.U1M6Summative.viewmodel.ItemViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +18,30 @@ public class ItemViewController {
     ServiceLayer serviceLayer;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ItemViewModel createItem(@RequestBody @Valid ItemViewModel itemViewModel) {
-        //return serviceLayer.saveItem(itemViewModel);
-        return itemViewModel;
+    public Item createItem(@RequestBody @Valid ItemViewModel itemViewModel) {
+        return serviceLayer.saveItem(itemViewModel);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public  ItemViewModel getItem(@PathVariable("id") int itemId){
-        //return serviceLayer.findItem(itemId);
-        return null;
+    public Item getItem(@PathVariable("id") int id){
+        return serviceLayer.findItem(id);
     }
 
     @DeleteMapping("/(id)")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteItem() {
-
+    public void deleteItem(@PathVariable("id") int id) {
+        serviceLayer.removeItem(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateItem(){
-
+    public ItemViewModel updateItem(@RequestBody @Valid ItemViewModel itemViewModel, @PathVariable("id") int id){
+//        if(id != itemViewModel.getId){
+//            throw new IllegalArgumentException();
+//        } else {
+//            return serviceLayer.updateItem(itemViewModel);
+//        }
+        return null;
     }
 }
