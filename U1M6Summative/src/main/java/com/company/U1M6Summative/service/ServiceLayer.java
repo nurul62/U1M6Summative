@@ -9,19 +9,28 @@ import com.company.U1M6Summative.model.Invoice;
 import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 import com.company.U1M6Summative.viewmodel.CustomerViewModel;
+<<<<<<< HEAD
 import com.company.U1M6Summative.viewmodel.InvoiceItemViewModel;
 import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
+=======
+<<<<<<< HEAD
+import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
+=======
+>>>>>>> 40023ea75e1884dd5a5efde79a60055963f520c9
+import com.company.U1M6Summative.viewmodel.ItemViewModel;
+>>>>>>> origin/master
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Component //creates a list of components (DAOs)
 public class ServiceLayer {
-    private CustomerDao customerDao;
+    CustomerDao customerDao;
     private InvoiceDao invoiceDao;
     private InvoiceItemDao invoiceItemDao;
     private ItemDao itemDao;
@@ -33,6 +42,7 @@ public class ServiceLayer {
         this.invoiceItemDao = invoiceItemDao;
         this.itemDao = itemDao;
     }
+<<<<<<< HEAD
     public InvoiceViewModel getInvoice(int invoiceId) {
         Invoice invoice = invoiceDao.getInvoice(invoiceId);
         Customer customer = customerDao.getCustomer(invoice.getCustomerId());
@@ -57,14 +67,112 @@ public class ServiceLayer {
         viewModel.setInvoice(invoice);
         viewModel.setItems(invoiceItems);
         return viewModel;
+=======
+
+//    public Customer addCustomer(Customer customer) {
+//        return customerDao.addCustomer(customer);
+//    }
+//
+//    public Item addItem(Item item) {
+//        return itemDao.addItem(item);
+//    }
+
+    //CUSTOMER API
+
+  //  @Transactional //take data from viewModel, persist to DAO, communicate w/ DAO
+    public CustomerViewModel saveCustomer(CustomerViewModel viewModel) {
+
+        //persist Customer
+        Customer customer = new Customer();
+
+        customer.setFirstName(viewModel.getFirstName());
+        customer.setLastName(viewModel.getLastName());
+        customer.setEmail(viewModel.getEmail());
+        customer.setCompany(viewModel.getCompany());
+        customer.setPhone(viewModel.getPhone());
+
+        customer = customerDao.addCustomer(customer);
+        viewModel.setCustomerId(customer.getCustomerId());
+
+        return viewModel;
+    }
+
+    public CustomerViewModel findCustomer(int customerId) {
+        Customer customer = customerDao.getCustomer(customerId);
+
+        return buildCustomerViewModel(customer);
+    }
+
+    public List<CustomerViewModel> findAllCustomers() {
+        List<Customer> cList = customerDao.getAllCustomers();
+        List<CustomerViewModel> cvmList = new ArrayList<>();
+
+        for (Customer c : cList) {
+            CustomerViewModel cvm = buildCustomerViewModel(c);
+            cvmList.add(cvm);
+        }
+
+        return cvmList;
+    }
+
+    @Transactional
+    public Customer updateCustomer(CustomerViewModel viewModel) {
+
+        Customer customer = new Customer();
+        customer.setFirstName(viewModel.getFirstName());
+        customer.setLastName(viewModel.getLastName());
+        customer.setEmail(viewModel.getEmail());
+        customer.setCompany(viewModel.getCompany());
+        customer.setPhone(viewModel.getPhone());
+        customerDao.updateCustomer(customer);
+
+        return customer;
+
+    }
+
+
+    // INVOICE API
+
+    public Invoice saveInvoice(@Valid InvoiceViewModel invoice) {
+        return invoiceDao.addInvoice(invoice);
+    }
+
+    public Invoice findInvoice(int invoiceId) {
+        return invoiceDao.getInvoice(invoiceId);
+    }
+
+    public List<Invoice> findAllInvoices() {
+        return invoiceDao.getAllInvoices();
+    }
+
+    public void updateInvoice(Invoice invoice) { //change to public Invoice updateInvoice(Invoice invoice){
+        invoiceDao.updateInvoice(invoice); //return invoiceDao.updateInvoice(invoice);
+        //**MUST CHANGE METHOD IN InvoiceDao TO RETURN AN OBJECT (Invoice) in order to work correctly
+    }
+
+    public void removeInvoice(int invoiceId) {
+        invoiceDao.deleteInvoice(invoiceId);
+
+>>>>>>> origin/master
     }
 
     public Customer addCustomer(Customer customer) {
         return customerDao.addCustomer(customer);
     }
 
+<<<<<<< HEAD
     public Item addItem(Item item){
+=======
+    // ITEM API
+
+<<<<<<< HEAD
+    public ItemViewModel saveItem(@Valid ItemViewModel itemViewModel) {
+        return itemDao.addItem(itemViewModel);
+=======
+    public Item saveItem(ItemViewModel item) {
+>>>>>>> origin/master
         return itemDao.addItem(item);
+>>>>>>> 40023ea75e1884dd5a5efde79a60055963f520c9
     }
 
     public InvoiceViewModel addInvoice(InvoiceViewModel invoiceViewModel) {

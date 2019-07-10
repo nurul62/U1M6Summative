@@ -4,13 +4,23 @@ import com.company.U1M6Summative.model.Customer;
 import com.company.U1M6Summative.model.Invoice;
 
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
 public class InvoiceViewModel {
+    @NotNull
     private Invoice invoice;
+    @NotNull
     private Customer customer;
+<<<<<<< HEAD
     private List<InvoiceItemViewModel> items;
+=======
+    @NotNull
+    private InvoiceItem invoiceItem;
+    @NotNull
+    private Item item;
+>>>>>>> origin/master
 
     public Invoice getInvoice() {
         return invoice;
