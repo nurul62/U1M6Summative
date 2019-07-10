@@ -9,7 +9,10 @@ import com.company.U1M6Summative.model.Invoice;
 import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 import com.company.U1M6Summative.viewmodel.CustomerViewModel;
+<<<<<<< HEAD
 import com.company.U1M6Summative.viewmodel.InvoiceViewModel;
+=======
+>>>>>>> 40023ea75e1884dd5a5efde79a60055963f520c9
 import com.company.U1M6Summative.viewmodel.ItemViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -110,8 +113,13 @@ public class ServiceLayer {
 
     // ITEM API
 
+<<<<<<< HEAD
     public ItemViewModel saveItem(@Valid ItemViewModel itemViewModel) {
         return itemDao.addItem(itemViewModel);
+=======
+    public Item saveItem(ItemViewModel item) {
+        return itemDao.addItem(item);
+>>>>>>> 40023ea75e1884dd5a5efde79a60055963f520c9
     }
 
     public Item findItem (int itemId) {
