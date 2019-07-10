@@ -12,31 +12,31 @@ import javax.validation.Valid;
 @RequestMapping("/invoice")
 public class InvoiceViewController {
 
-    @Autowired
-    ServiceLayer serviceLayer;
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public InvoiceViewModel createInvoice(@RequestBody @Valid InvoiceViewModel invoiceViewModel) {
-        //return serviceLayer.saveInvoice(invoiceViewModel);
-        return invoiceViewModel;
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public  InvoiceViewController getInvoice(@PathVariable("id") int invoiceId){
-        //return serviceLayer.findInvoice(invoiceId);
-        return null;
-    }
-
-    @DeleteMapping("/(id)")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteInvoice() {
-
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateInvoice(){
-
-    }
+//    @Autowired
+//    ServiceLayer serviceLayer;
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public InvoiceViewModel createInvoice(@RequestBody @Valid InvoiceViewModel invoiceViewModel) {
+//        //return serviceLayer.saveInvoice(invoiceViewModel);
+//        return invoiceViewModel;
+//    }
+//
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public  InvoiceViewController getInvoice(@PathVariable("id") int invoiceId){
+//        //return serviceLayer.findInvoice(invoiceId);
+//        return null;
+//    }
+//
+//    @DeleteMapping("/(id)")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void deleteInvoice() {
+//
+//    }
+//
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void updateInvoice(){
+//
+//    }
 }

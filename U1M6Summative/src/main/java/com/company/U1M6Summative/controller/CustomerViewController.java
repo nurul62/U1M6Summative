@@ -13,35 +13,35 @@ import java.util.List;
 @RestController
 @RequestMapping("/customer")
 public class CustomerViewController {
-    @Autowired
-    ServiceLayer serviceLayer;
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public CustomerViewModel createCustomer(@RequestBody @Valid CustomerViewModel customerViewModel) {
-        return serviceLayer.saveCustomer(customerViewModel);
-    }
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<CustomerViewModel> findAllCustomers(){
-        return serviceLayer.findAllCustomers();
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public  CustomerViewModel findCustomer(@PathVariable("id") int customerId){
-        return serviceLayer.findCustomer(customerId);
-    }
-
-    @DeleteMapping("/(id)")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeCustomer(@PathVariable("id") int customerId) {
-        //serviceLayer.removeCustomer(customerId);
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCustomer(@PathVariable("id") int customerId){
-        //serviceLayer.updateCustomer(customerId);
-    }
+//    @Autowired
+//    ServiceLayer serviceLayer;
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public CustomerViewModel createCustomer(@RequestBody @Valid CustomerViewModel customerViewModel) {
+//        return serviceLayer.saveCustomer(customerViewModel);
+//    }
+//
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public List<CustomerViewModel> findAllCustomers(){
+//        return serviceLayer.findAllCustomers();
+//    }
+//
+//    @GetMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public  CustomerViewModel findCustomer(@PathVariable("id") int customerId){
+//        return serviceLayer.findCustomer(customerId);
+//    }
+//
+//    @DeleteMapping("/(id)")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void removeCustomer(@PathVariable("id") int customerId) {
+//        //serviceLayer.removeCustomer(customerId);
+//    }
+//
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void updateCustomer(@PathVariable("id") int customerId){
+//        //serviceLayer.updateCustomer(customerId);
+//    }
 }
