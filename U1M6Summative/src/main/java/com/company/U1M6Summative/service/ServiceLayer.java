@@ -19,7 +19,7 @@ import java.util.List;
 
 @Component //creates a list of components (DAOs)
 public class ServiceLayer {
-    private CustomerDao customerDao;
+    CustomerDao customerDao;
     private InvoiceDao invoiceDao;
     private InvoiceItemDao invoiceItemDao;
     private ItemDao itemDao;
@@ -42,16 +42,18 @@ public class ServiceLayer {
 
     //CUSTOMER API
 
-    @Transactional //take data from viewModel, persist to DAO, communicate w/ DAO
+  //  @Transactional //take data from viewModel, persist to DAO, communicate w/ DAO
     public CustomerViewModel saveCustomer(CustomerViewModel viewModel) {
 
         //persist Customer
         Customer customer = new Customer();
+
         customer.setFirstName(viewModel.getFirstName());
         customer.setLastName(viewModel.getLastName());
         customer.setEmail(viewModel.getEmail());
         customer.setCompany(viewModel.getCompany());
         customer.setPhone(viewModel.getPhone());
+
         customer = customerDao.addCustomer(customer);
         viewModel.setCustomerId(customer.getCustomerId());
 
@@ -74,6 +76,21 @@ public class ServiceLayer {
         }
 
         return cvmList;
+    }
+
+    @Transactional
+    public Customer updateCustomer(CustomerViewModel viewModel) {
+
+        Customer customer = new Customer();
+        customer.setFirstName(viewModel.getFirstName());
+        customer.setLastName(viewModel.getLastName());
+        customer.setEmail(viewModel.getEmail());
+        customer.setCompany(viewModel.getCompany());
+        customer.setPhone(viewModel.getPhone());
+        customerDao.updateCustomer(customer);
+
+        return customer;
+
     }
 
 

@@ -12,7 +12,7 @@ public interface CustomerDao {
 
     List<Customer> getAllCustomers();
 
-    void updateCustomer(Customer customer);
+    Customer updateCustomer(Customer customer);
 
     Customer deleteCustomer(int customerId);
 
