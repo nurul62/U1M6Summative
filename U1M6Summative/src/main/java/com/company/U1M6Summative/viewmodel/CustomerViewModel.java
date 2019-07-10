@@ -6,15 +6,21 @@ import com.company.U1M6Summative.model.Invoice;
 import com.company.U1M6Summative.model.InvoiceItem;
 import com.company.U1M6Summative.model.Item;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 public class CustomerViewModel {
 
     private int customerId;
+    @NotEmpty(message = "First name can not be empty.")
     private String firstName;
+    @NotEmpty(message = "Last name can not be empty.")
     private String lastName;
+    @NotEmpty(message = "Email can not be empty.")
     private String email;
+    @NotEmpty(message = "Company can not be empty.")
     private String company;
+    @NotEmpty(message = "Phone number can not be empty.")
     private String phone;
 
     public int getCustomerId() {
